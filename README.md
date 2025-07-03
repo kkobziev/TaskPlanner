@@ -105,17 +105,28 @@ Once you have the prerequisites installed:
    ```bash
    dotnet build
    ```
-4. Run the application:
+4. Trust the HTTPS development certificate (first time only):
+   ```bash
+   dotnet dev-certs https --trust
+   ```
+5. Run the application:
    ```bash
    dotnet run
    ```
-5. Open your browser and navigate to `http://localhost:5000`
+6. Open your browser and navigate to:
+   - **HTTPS (Recommended):** `https://localhost:5001`
+   - **HTTP:** `http://localhost:5000`
+
+**Note for Safari users:** Use the HTTPS URL (`https://localhost:5001`) to avoid "HTTPS-Only" errors.
 
 ## Getting Started
 1. Clone the repository.
 2. Navigate to the project directory.
-3. Run the application using the command: `dotnet run`.
-4. Access the application in your web browser at `http://localhost:5000`.
+3. Trust the HTTPS certificate: `dotnet dev-certs https --trust`
+4. Run the application using the command: `dotnet run`.
+5. Access the application in your web browser at:
+   - **HTTPS (Recommended):** `https://localhost:5001`
+   - **HTTP:** `http://localhost:5000`
 
 ## Localization
 The application supports English and Ukrainian languages. Localization files are provided in the `Resources` directory.
