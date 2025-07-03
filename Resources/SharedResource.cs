@@ -1,8 +1,8 @@
 namespace TaskPlanner.Resources
 {
-    public class SharedResource
+    // This class is used as a key for localization
+    // The actual implementation is in SharedResource.Designer.cs
+    public partial class SharedResource
     {
-        // This class is used as a key for localization
-        // The actual translations are in .resx files
     }
 }

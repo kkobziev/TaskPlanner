@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, ...</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, ...</value>
+  </resheader>
+  <!-- Keys copied from SharedResource.en.resx -->
+  <data name="TaskPlannerTitle" xml:space="preserve">
+    <value>Task Planner</value>
+  </data>
+  <data name="WelcomeTitle" xml:space="preserve">
+    <value>Welcome to Task Planner!</value>
+  </data>
+  <data name="WelcomeLead" xml:space="preserve">
+    <value>Organize your tasks efficiently and stay productive.</value>
+  </data>
+  <data name="AddTasksCard" xml:space="preserve">
+    <value>Add Tasks</value>
+  </data>
+  <data name="AddTasksDesc" xml:space="preserve">
+    <value>Easily add new tasks and keep track of your to-dos.</value>
+  </data>
+  <data name="MarkCompleteCard" xml:space="preserve">
+    <value>Mark Complete</value>
+  </data>
+  <data name="MarkCompleteDesc" xml:space="preserve">
+    <value>Mark your tasks as completed and see your progress.</value>
+  </data>
+  <data name="MultilingualCard" xml:space="preserve">
+    <value>Multilingual</value>
+  </data>
+  <data name="MultilingualDesc" xml:space="preserve">
+    <value>Use Task Planner in your preferred language.</value>
+  </data>
+  <data name="TasksListTitle" xml:space="preserve">
+    <value>Tasks List</value>
+  </data>
+  <data name="CreateTaskButton" xml:space="preserve">
+    <value>Create Task</value>
+  </data>
+  <data name="EditTaskButton" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="DeleteTaskButton" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="TaskName" xml:space="preserve">
+    <value>Task Name</value>
+  </data>
+  <data name="TaskDescription" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="TaskDueDate" xml:space="preserve">
+    <value>Due Date</value>
+  </data>
+  <data name="TaskStatus" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="TaskActions" xml:space="preserve">
+    <value>Actions</value>
+  </data>
+  <data name="NoTasksMessage" xml:space="preserve">
+    <value>No tasks available.</value>
+  </data>
+  <data name="SaveButton" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="CancelButton" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="LanguageSwitcherLabel" xml:space="preserve">
+    <value>Language:</value>
+  </data>
+  <data name="GetStartedBtn" xml:space="preserve">
+    <value>Get Started with Your Tasks</value>
+  </data>
+</root>

@@ -36,4 +36,44 @@
   <data name="TaskDeleted" xml:space="preserve">
     <value>Task has been deleted successfully.</value>
   </data>
+  <data name="TasksCount" xml:space="preserve">
+    <value>task(s)</value>
+  </data>
+  <data name="NoTasksFound" xml:space="preserve">
+    <value>No tasks found</value>
+  </data>
+  <data name="GetStarted" xml:space="preserve">
+    <value>Get started by creating your first task.</value>
+  </data>
+  <data name="TaskPlannerTitle" xml:space="preserve">
+    <value>Task Planner</value>
+  </data>
+  <data name="WelcomeTitle" xml:space="preserve">
+    <value>Welcome to Task Planner!</value>
+  </data>
+  <data name="WelcomeLead" xml:space="preserve">
+    <value>Organize your tasks efficiently and stay productive.</value>
+  </data>
+  <data name="AddTasksCard" xml:space="preserve">
+    <value>Add Tasks</value>
+  </data>
+  <data name="AddTasksDesc" xml:space="preserve">
+    <value>Easily add new tasks and keep track of your to-dos.</value>
+  </data>
+  <data name="MarkCompleteCard" xml:space="preserve">
+    <value>Mark Complete</value>
+  </data>
+  <data name="MarkCompleteDesc" xml:space="preserve">
+    <value>Mark your tasks as completed and see your progress.</value>
+  </data>
+  <data name="MultilingualCard" xml:space="preserve">
+    <value>Multilingual</value>
+  </data>
+  <data name="MultilingualDesc" xml:space="preserve">
+    <value>Use Task Planner in your preferred language.</value>
+  </data>
+  <data name="GetStartedBtn" xml:space="preserve">
+    <value>Get Started with Your Tasks</value>
+  </data>
+
 </root>

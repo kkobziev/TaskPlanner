@@ -1,17 +1,18 @@
 @page
 @model TaskPlanner.Pages.Tasks.IndexModel
+@inject Microsoft.Extensions.Localization.IStringLocalizer<TaskPlanner.Resources.SharedResource> Localizer
 @{
-    ViewData["Title"] = "Task List";
+    ViewData["Title"] = Localizer["TaskList"];
 }
 
 <div class="container mt-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
             <h1 class="h2 d-inline-block me-3">@ViewData["Title"]</h1>
-            <span class="badge bg-primary">@Model.Tasks.Count task(s)</span>
+            <span class="badge bg-primary">@Model.Tasks.Count @Localizer["TasksCount"]</span> <!-- Add 'TasksCount' to resources -->
         </div>
         <a asp-page="Create" class="btn btn-primary">
-            <i class="bi bi-plus-circle me-1"></i> Create New Task
+            <i class="bi bi-plus-circle me-1"></i> @Localizer["AddTask"]
         </a>
     </div>
 
@@ -47,10 +48,10 @@
                 <div class="mb-4">
                     <i class="bi bi-clipboard-x text-muted" style="font-size: 3rem;"></i>
                 </div>
-                <h3 class="h5 mb-3">No tasks found</h3>
-                <p class="text-muted mb-4">Get started by creating your first task.</p>
+                <h3 class="h5 mb-3">@Localizer["NoTasksFound"]</h3> <!-- Add 'NoTasksFound' to resources -->
+                <p class="text-muted mb-4">@Localizer["GetStarted"]</p> <!-- Add 'GetStarted' to resources -->
                 <a asp-page="Create" class="btn btn-primary">
-                    <i class="bi bi-plus-circle me-1"></i> Create Task
+                    <i class="bi bi-plus-circle me-1"></i> @Localizer["AddTask"]
                 </a>
             </div>
         </div>
@@ -289,4 +290,14 @@
             });
         });
     </script>
+}
+
+@{
+    // Debugging resource resolution
+    var debugTaskList = Localizer["TaskList"];
+    var debugTasksCount = Localizer["TasksCount"];
+    var debugAddTask = Localizer["AddTask"];
+    Console.WriteLine($"TaskList: {debugTaskList}");
+    Console.WriteLine($"TasksCount: {debugTasksCount}");
+    Console.WriteLine($"AddTask: {debugAddTask}");
 }

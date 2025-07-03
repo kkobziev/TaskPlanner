@@ -39,6 +39,25 @@
                             </a>
                         </li>
                     </ul>
+                    <form id="selectLanguage" method="get" class="d-flex ms-3">
+                        <select name="culture" class="form-select form-select-sm" onchange="this.form.submit()">
+                            @if (System.Globalization.CultureInfo.CurrentUICulture.Name.StartsWith("en"))
+                            {
+                                <option value="en" selected>English</option>
+                                <option value="uk">Українська</option>
+                            }
+                            else if (System.Globalization.CultureInfo.CurrentUICulture.Name.StartsWith("uk"))
+                            {
+                                <option value="en">English</option>
+                                <option value="uk" selected>Українська</option>
+                            }
+                            else
+                            {
+                                <option value="en">English</option>
+                                <option value="uk">Українська</option>
+                            }
+                        </select>
+                    </form>
                 </div>
             </div>
         </nav>

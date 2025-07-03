@@ -1,35 +1,37 @@
 @page
 @model TaskPlanner.Pages.IndexModel
+@inject TaskPlanner.Services.LocalizerHelper LocalizerHelper
 @{
-    ViewData["Title"] = "Task Planner";
+    ViewData["Title"] = LocalizerHelper["TaskPlannerTitle"];
 }
 
+
 <div class="text-center">
-    <h1 class="display-4">Welcome to Task Planner</h1>
-    <p class="lead">Manage your tasks efficiently with our simple and intuitive task management system.</p>
+    <h1 class="display-4">@LocalizerHelper["WelcomeTitle"]</h1>
+    <p class="lead">@LocalizerHelper["WelcomeLead"]</p>
     
     <div class="row mt-5">
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">📝 Add Tasks</h5>
-                    <p class="card-text">Create new tasks with name, description, and due date.</p>
+                    <h5 class="card-title">📝 @LocalizerHelper["AddTasksCard"]</h5>
+                    <p class="card-text">@LocalizerHelper["AddTasksDesc"]</p>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">✅ Mark Complete</h5>
-                    <p class="card-text">Track your progress by marking tasks as completed.</p>
+                    <h5 class="card-title">✅ @LocalizerHelper["MarkCompleteCard"]</h5>
+                    <p class="card-text">@LocalizerHelper["MarkCompleteDesc"]</p>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">🌍 Multilingual</h5>
-                    <p class="card-text">Available in English and Ukrainian languages.</p>
+                    <h5 class="card-title">🌍 @LocalizerHelper["MultilingualCard"]</h5>
+                    <p class="card-text">@LocalizerHelper["MultilingualDesc"]</p>
                 </div>
             </div>
         </div>
@@ -37,7 +39,7 @@
     
     <div class="mt-5">
         <a class="btn btn-primary btn-lg" asp-page="/Tasks/Index" role="button">
-            Get Started with Your Tasks
+            @LocalizerHelper["GetStartedBtn"]
         </a>
     </div>
 </div>

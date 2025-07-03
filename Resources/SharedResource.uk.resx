@@ -27,4 +27,44 @@
   <data name="ConfirmDelete" xml:space="preserve">
     <value>Ви впевнені, що хочете видалити це завдання?</value>
   </data>
+  <data name="TasksCount" xml:space="preserve">
+    <value>завдання(нь)</value>
+  </data>
+  <data name="NoTasksFound" xml:space="preserve">
+    <value>Завдань не знайдено</value>
+  </data>
+  <data name="GetStarted" xml:space="preserve">
+    <value>Почніть, створивши перше завдання.</value>
+  </data>
+  <data name="TaskPlannerTitle" xml:space="preserve">
+    <value>Планувальник Завдань</value>
+  </data>
+  <data name="WelcomeTitle" xml:space="preserve">
+    <value>Ласкаво просимо до Планувальника Завдань!</value>
+  </data>
+  <data name="WelcomeLead" xml:space="preserve">
+    <value>Організуйте свої завдання ефективно та залишайтеся продуктивними.</value>
+  </data>
+  <data name="AddTasksCard" xml:space="preserve">
+    <value>Додати завдання</value>
+  </data>
+  <data name="AddTasksDesc" xml:space="preserve">
+    <value>Легко додавайте нові завдання та відстежуйте свої справи.</value>
+  </data>
+  <data name="MarkCompleteCard" xml:space="preserve">
+    <value>Відмітити виконаним</value>
+  </data>
+  <data name="MarkCompleteDesc" xml:space="preserve">
+    <value>Відмічайте завдання як виконані та слідкуйте за прогресом.</value>
+  </data>
+  <data name="MultilingualCard" xml:space="preserve">
+    <value>Багатомовність</value>
+  </data>
+  <data name="MultilingualDesc" xml:space="preserve">
+    <value>Використовуйте Планувальник Завдань своєю мовою.</value>
+  </data>
+  <data name="GetStartedBtn" xml:space="preserve">
+    <value>Почати роботу із завданнями</value>
+  </data>
+
 </root>
