@@ -75,5 +75,11 @@
   <data name="GetStartedBtn" xml:space="preserve">
     <value>Get Started with Your Tasks</value>
   </data>
+  <data name="Tasks" xml:space="preserve">
+    <value>Tasks</value>
+  </data>
+  <data name="FooterText" xml:space="preserve">
+    <value>A simple task management application</value>
+  </data>
 
 </root>

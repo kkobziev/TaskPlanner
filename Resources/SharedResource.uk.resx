@@ -66,5 +66,11 @@
   <data name="GetStartedBtn" xml:space="preserve">
     <value>Почати роботу із завданнями</value>
   </data>
+  <data name="Tasks" xml:space="preserve">
+    <value>Завдання</value>
+  </data>
+  <data name="FooterText" xml:space="preserve">
+    <value>Простий додаток для управління завданнями</value>
+  </data>
 
 </root>

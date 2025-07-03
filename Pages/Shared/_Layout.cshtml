@@ -1,9 +1,10 @@
+@inject TaskPlanner.Services.LocalizerHelper Localizer
 <!DOCTYPE html>
-<html lang="en">
+<html lang="@System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - TaskPlanner</title>
+    <title>@ViewData["Title"] - @Localizer["TaskPlannerTitle"]</title>
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -20,7 +21,7 @@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-page="/Index">
-                    <i class="bi bi-check2-square me-2"></i>TaskPlanner
+                    <i class="bi bi-check2-square me-2"></i>@Localizer["TaskPlannerTitle"]
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" 
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,12 +31,12 @@
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-page="/Tasks/Index">
-                                <i class="bi bi-list-task me-1"></i>Tasks
+                                <i class="bi bi-list-task me-1"></i>@Localizer["Tasks"]
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-page="/Tasks/Create">
-                                <i class="bi bi-plus-circle me-1"></i>Add Task
+                                <i class="bi bi-plus-circle me-1"></i>@Localizer["AddTask"]
                             </a>
                         </li>
                     </ul>
@@ -71,7 +72,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container text-center">
-            &copy; @DateTime.Now.Year - TaskPlanner - A simple task management application
+            &copy; @DateTime.Now.Year - @Localizer["TaskPlannerTitle"] - @Localizer["FooterText"]
         </div>
     </footer>
 

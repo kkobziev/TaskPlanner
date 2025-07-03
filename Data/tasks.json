@@ -12,7 +12,7 @@
     "Name": "new",
     "Description": "new",
     "DueDate": "2025-07-04T00:00:00",
-    "IsCompleted": false,
+    "IsCompleted": true,
     "CreatedAt": "2025-07-03T17:53:00.91832+03:00"
   }
 ]
