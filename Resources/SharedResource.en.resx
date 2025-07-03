@@ -18,6 +18,12 @@
   <data name="DeleteTask" xml:space="preserve">
     <value>Delete Task</value>
   </data>
+  <data name="SaveButton" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="CancelButton" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
   <data name="MarkAsCompleted" xml:space="preserve">
     <value>Mark as Completed</value>
   </data>

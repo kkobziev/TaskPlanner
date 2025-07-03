@@ -18,6 +18,12 @@
   <data name="DeleteTask" xml:space="preserve">
     <value>Видалити завдання</value>
   </data>
+  <data name="SaveButton" xml:space="preserve">
+    <value>Зберегти</value>
+  </data>
+  <data name="CancelButton" xml:space="preserve">
+    <value>Скасувати</value>
+  </data>
   <data name="CompleteTask" xml:space="preserve">
     <value>Завершити завдання</value>
   </data>
