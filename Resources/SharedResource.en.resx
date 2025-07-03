@@ -81,5 +81,44 @@
   <data name="FooterText" xml:space="preserve">
     <value>A simple task management application</value>
   </data>
+  <data name="CreateNewTask" xml:space="preserve">
+    <value>Create New Task</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="BackToList" xml:space="preserve">
+    <value>Back to List</value>
+  </data>
+  <data name="ValidationErrors" xml:space="preserve">
+    <value>Validation Errors</value>
+  </data>
+  <data name="ProvideName" xml:space="preserve">
+    <value>Please provide a task name.</value>
+  </data>
+  <data name="SelectDueDate" xml:space="preserve">
+    <value>Please select a due date.</value>
+  </data>
+  <data name="CreateTask" xml:space="preserve">
+    <value>Create Task</value>
+  </data>
+  <data name="TaskNameRequired" xml:space="preserve">
+    <value>Task name is required</value>
+  </data>
+  <data name="TaskNameLength" xml:space="preserve">
+    <value>Task name must be between {2} and {1} characters</value>
+  </data>
+  <data name="DescriptionLength" xml:space="preserve">
+    <value>Description cannot exceed {1} characters</value>
+  </data>
+  <data name="DueDateRequired" xml:space="preserve">
+    <value>Due date is required</value>
+  </data>
+  <data name="DueDateFuture" xml:space="preserve">
+    <value>Due date must be today or in the future</value>
+  </data>
 
 </root>

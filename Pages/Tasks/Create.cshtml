@@ -1,7 +1,8 @@
 @page
 @model TaskPlanner.Pages.Tasks.CreateModel
+@inject TaskPlanner.Services.LocalizerHelper Localizer
 @{
-    ViewData["Title"] = "Create New Task";
+    ViewData["Title"] = Localizer["CreateNewTask"];
 }
 
 <div class="container mt-4">
@@ -9,9 +10,9 @@
         <div class="col-12">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a asp-page="/Index">Home</a></li>
-                    <li class="breadcrumb-item"><a asp-page="./Index">Tasks</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Create</li>
+                    <li class="breadcrumb-item"><a asp-page="/Index">@Localizer["Home"]</a></li>
+                    <li class="breadcrumb-item"><a asp-page="./Index">@Localizer["Tasks"]</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">@Localizer["Create"]</li>
                 </ol>
             </nav>
         </div>
@@ -22,14 +23,14 @@
             <div class="card">
                 <div class="card-header bg-primary text-white">
                     <h2 class="h5 mb-0">
-                        <i class="bi bi-plus-circle me-2"></i>Create New Task
+                        <i class="bi bi-plus-circle me-2"></i>@Localizer["CreateNewTask"]
                     </h2>
                 </div>
                 <div class="card-body">
                     @if (!ViewData.ModelState.IsValid)
                     {
                         <div class="alert alert-danger" role="alert">
-                            <h5 class="alert-heading"><i class="bi bi-exclamation-triangle-fill me-2"></i>Validation Errors</h5>
+                            <h5 class="alert-heading"><i class="bi bi-exclamation-triangle-fill me-2"></i>@Localizer["ValidationErrors"]</h5>
                             <div asp-validation-summary="All" class="mb-0"></div>
                         </div>
                     }
@@ -39,10 +40,10 @@
                         <div class="row mb-3">
                             <div class="col-md-12">
                                 <div class="form-floating mb-3">
-                                    <input asp-for="TaskName" class="form-control" placeholder="Enter task name" required />
-<label asp-for="TaskName"></label>
+                                    <input asp-for="TaskName" class="form-control" placeholder="@Localizer["TaskName"]" required />
+<label asp-for="TaskName">@Localizer["TaskName"]</label>
 <div class="invalid-feedback">
-    Please provide a task name.
+    @Localizer["ProvideName"]
 </div>
 <span asp-validation-for="TaskName" class="text-danger"></span>
                                 </div>
@@ -52,9 +53,9 @@
                         <div class="row mb-3">
                             <div class="col-md-12">
                                 <div class="form-floating">
-                                    <textarea asp-for="TaskDescription" class="form-control" placeholder="Enter task description" 
+                                    <textarea asp-for="TaskDescription" class="form-control" placeholder="@Localizer["TaskDescription"]" 
           style="height: 120px;"></textarea>
-<label asp-for="TaskDescription"></label>
+<label asp-for="TaskDescription">@Localizer["TaskDescription"]</label>
 <span asp-validation-for="TaskDescription" class="text-danger"></span>
                                 </div>
                             </div>
@@ -65,9 +66,9 @@
                                 <div class="form-floating">
                                     <input asp-for="DueDate" class="form-control" type="date" required 
        min="@DateTime.Today.ToString("yyyy-MM-dd")" />
-<label asp-for="DueDate"></label>
+<label asp-for="DueDate">@Localizer["DueDate"]</label>
 <div class="invalid-feedback">
-    Please select a due date.
+    @Localizer["SelectDueDate"]
 </div>
 <span asp-validation-for="DueDate" class="text-danger"></span>
                                 </div>
@@ -76,10 +77,10 @@
 
                         <div class="d-flex justify-content-between align-items-center">
                             <a asp-page="./Index" class="btn btn-outline-secondary">
-                                <i class="bi bi-arrow-left me-1"></i> Back to List
+                                <i class="bi bi-arrow-left me-1"></i> @Localizer["BackToList"]
                             </a>
                             <button type="submit" class="btn btn-primary">
-                                <i class="bi bi-save me-1"></i> Create Task
+                                <i class="bi bi-save me-1"></i> @Localizer["CreateTask"]
                             </button>
                         </div>
                     </form>

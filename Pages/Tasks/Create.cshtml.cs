@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Localization;
+using TaskPlanner.Resources;
 using TaskPlanner.Models;
 using TaskPlanner.Services;
 
@@ -15,11 +17,16 @@ namespace TaskPlanner.Pages.Tasks
     {
         private readonly ITaskService _taskService;
         private readonly ILogger<CreateModel> _logger;
+        private readonly IStringLocalizer<SharedResource> _localizer;
 
-        public CreateModel(ITaskService taskService, ILogger<CreateModel> logger)
+        public CreateModel(
+            ITaskService taskService, 
+            ILogger<CreateModel> logger,
+            IStringLocalizer<SharedResource> localizer)
         {
             _taskService = taskService ?? throw new ArgumentNullException(nameof(taskService));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _localizer = localizer ?? throw new ArgumentNullException(nameof(localizer));
         }
 
         [BindProperty]
@@ -103,7 +110,7 @@ namespace TaskPlanner.Pages.Tasks
             if (value is DateTime dateValue)
             {
                 if (dateValue.Date < DateTime.Today)
-                return new ValidationResult(ErrorMessage ?? "Due date cannot be in the past");
+                    return new ValidationResult(ErrorMessage ?? "Due date cannot be in the past");
             }
             return ValidationResult.Success;
         }
