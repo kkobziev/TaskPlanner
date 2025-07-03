@@ -127,4 +127,85 @@
   <data name="DueDateFuture" xml:space="preserve">
     <value>Due date must be today or in the future</value>
   </data>
+  <data name="TaskColumn" xml:space="preserve">
+    <value>Task</value>
+  </data>
+  <data name="DescriptionColumn" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="DueDateColumn" xml:space="preserve">
+    <value>Due Date</value>
+  </data>
+  <data name="StatusColumn" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="ActionsColumn" xml:space="preserve">
+    <value>Actions</value>
+  </data>
+  <data name="Completed" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+  <data name="Overdue" xml:space="preserve">
+    <value>Overdue</value>
+  </data>
+  <data name="Pending" xml:space="preserve">
+    <value>Pending</value>
+  </data>
+  <data name="DaysOverdue" xml:space="preserve">
+    <value>{0} day(s) overdue</value>
+  </data>
+  <data name="DueToday" xml:space="preserve">
+    <value>Due today</value>
+  </data>
+  <data name="DueTomorrow" xml:space="preserve">
+    <value>Due tomorrow</value>
+  </data>
+  <data name="InXDays" xml:space="preserve">
+    <value>In {0} days</value>
+  </data>
+  <data name="NoDescription" xml:space="preserve">
+    <value>No description</value>
+  </data>
+  <data name="MarkAsIncomplete" xml:space="preserve">
+    <value>Mark as incomplete</value>
+  </data>
+  <data name="MarkAsComplete" xml:space="preserve">
+    <value>Mark as complete</value>
+  </data>
+  <data name="EditTaskTooltip" xml:space="preserve">
+    <value>Edit task</value>
+  </data>
+  <data name="DeleteTaskTooltip" xml:space="preserve">
+    <value>Delete task</value>
+  </data>
+  <data name="Created" xml:space="preserve">
+    <value>Created</value>
+  </data>
+  <data name="SearchTasks" xml:space="preserve">
+    <value>Search tasks...</value>
+  </data>
+  <data name="ShowTasksPerPage" xml:space="preserve">
+    <value>Show {0} tasks per page</value>
+  </data>
+  <data name="ShowingXtoYofZ" xml:space="preserve">
+    <value>Showing {0} to {1} of {2} tasks</value>
+  </data>
+  <data name="FilteredFromTotal" xml:space="preserve">
+    <value>(filtered from {0} total tasks)</value>
+  </data>
+  <data name="First" xml:space="preserve">
+    <value>First</value>
+  </data>
+  <data name="Last" xml:space="preserve">
+    <value>Last</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Previous</value>
+  </data>
+  <data name="DeleteConfirmation" xml:space="preserve">
+    <value>Are you sure you want to delete this task?</value>
+  </data>
 </root>
