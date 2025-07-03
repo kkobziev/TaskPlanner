@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 using TaskPlanner.Models;
 
 namespace TaskPlanner.Services
@@ -11,11 +12,20 @@ namespace TaskPlanner.Services
     public class FileTaskService : ITaskService
     {
         private readonly string _filePath;
+        private readonly ILogger<FileTaskService> _logger;
 
-        public FileTaskService(string filePath = "Data/tasks.json")
+        public FileTaskService(ILogger<FileTaskService> logger, IWebHostEnvironment env, string filePath = "Data/tasks.json")
         {
-            _filePath = filePath;
-            Directory.CreateDirectory(Path.GetDirectoryName(_filePath) ?? "Data");
+            _logger = logger;
+            // Resolve to absolute path
+            _filePath = Path.Combine(env.ContentRootPath, filePath);
+            var directory = Path.GetDirectoryName(_filePath);
+            if (!string.IsNullOrEmpty(directory) && !Directory.Exists(directory))
+            {
+                _logger.LogInformation($"Creating directory: {directory}");
+                Directory.CreateDirectory(directory);
+            }
+            _logger.LogInformation($"Using task storage file: {_filePath}");
         }
 
         public async Task<IEnumerable<TaskItem>> GetAllTasksAsync()
@@ -76,8 +86,32 @@ namespace TaskPlanner.Services
 
         private async Task SaveTasksAsync(List<TaskItem> tasks)
         {
-            var json = JsonSerializer.Serialize(tasks, new JsonSerializerOptions { WriteIndented = true });
-            await File.WriteAllTextAsync(_filePath, json);
+            try
+            {
+                var options = new JsonSerializerOptions { WriteIndented = true };
+                var json = JsonSerializer.Serialize(tasks, options);
+                
+                // Create a temporary file first, then replace the original
+                var tempFile = $"{_filePath}.{Guid.NewGuid()}.tmp";
+                await File.WriteAllTextAsync(tempFile, json);
+                
+                // Replace the original file atomically
+                if (File.Exists(_filePath))
+                {
+                    File.Replace(tempFile, _filePath, null);
+                }
+                else
+                {
+                    File.Move(tempFile, _filePath);
+                }
+                
+                _logger.LogInformation($"Successfully saved {tasks.Count} tasks to {_filePath}");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error saving tasks to {_filePath}");
+                throw; // Re-throw to be handled by the caller
+            }
         }
     }
 }

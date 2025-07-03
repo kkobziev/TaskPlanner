@@ -4,37 +4,289 @@
     ViewData["Title"] = "Task List";
 }
 
-<h1>@ViewData["Title"]</h1>
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1 class="h2 d-inline-block me-3">@ViewData["Title"]</h1>
+            <span class="badge bg-primary">@Model.Tasks.Count task(s)</span>
+        </div>
+        <a asp-page="Create" class="btn btn-primary">
+            <i class="bi bi-plus-circle me-1"></i> Create New Task
+        </a>
+    </div>
 
-<p>
-    <a asp-page="Create">Create New Task</a>
-</p>
+    @if (!string.IsNullOrEmpty(Model.StatusMessage))
+    {
+        var alertClass = !string.IsNullOrEmpty(Model.StatusMessageType) ? $"alert-{Model.StatusMessageType}" : "alert-info";
+        <div class="alert @alertClass alert-dismissible fade show" role="alert">
+            @if (Model.StatusMessageType == "success")
+            {
+                <i class="bi bi-check-circle-fill me-2"></i>
+            }
+            else if (Model.StatusMessageType == "danger")
+            {
+                <i class="bi bi-exclamation-triangle-fill me-2"></i>
+            }
+            else if (Model.StatusMessageType == "warning")
+            {
+                <i class="bi bi-exclamation-circle-fill me-2"></i>
+            }
+            else
+            {
+                <i class="bi bi-info-circle-fill me-2"></i>
+            }
+            @Model.StatusMessage
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Due Date</th>
-            <th>Completed</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var task in Model.Tasks)
-        {
-            <tr>
-                <td>@task.Name</td>
-                <td>@task.Description</td>
-                <td>@task.DueDate.ToShortDateString()</td>
-                <td>
-                    <input type="checkbox" disabled="disabled" @(task.IsCompleted ? "checked" : "") />
-                </td>
-                <td>
-                    <a asp-page="Edit" asp-route-id="@task.Id">Edit</a> |
-                    <a asp-page="Delete" asp-route-id="@task.Id">Delete</a>
-                </td>
-            </tr>
+    @if (!Model.Tasks.Any())
+    {
+        <div class="card border-0 shadow-sm">
+            <div class="card-body text-center py-5">
+                <div class="mb-4">
+                    <i class="bi bi-clipboard-x text-muted" style="font-size: 3rem;"></i>
+                </div>
+                <h3 class="h5 mb-3">No tasks found</h3>
+                <p class="text-muted mb-4">Get started by creating your first task.</p>
+                <a asp-page="Create" class="btn btn-primary">
+                    <i class="bi bi-plus-circle me-1"></i> Create Task
+                </a>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="card border-0 shadow-sm">
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Task</th>
+                                <th>Description</th>
+                                <th>Due Date</th>
+                                <th class="text-center">Status</th>
+                                <th class="text-end">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var task in Model.Tasks)
+                            {
+                                var isOverdue = !task.IsCompleted && task.DueDate < DateTime.Today;
+                                var rowClass = task.IsCompleted ? "table-active" : "";
+                                rowClass += isOverdue ? " table-danger" : "";
+
+                                <tr class="@rowClass">
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            @if (task.IsCompleted)
+                                            {
+                                                <i class="bi bi-check-circle-fill text-success me-2" title="Completed"></i>
+                                            }
+                                            else if (isOverdue)
+                                            {
+                                                <i class="bi bi-exclamation-triangle-fill text-danger me-2" title="Overdue"></i>
+                                            }
+                                            else
+                                            {
+                                                <i class="bi bi-circle me-2" style="opacity: 0.3;" title="Pending"></i>
+                                            }
+                                            <div>
+                                                <div class="fw-medium">@task.Name</div>
+                                                <small class="text-muted">Created: @task.CreatedAt.ToString("d")</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        @if (!string.IsNullOrEmpty(task.Description))
+                                        {
+                                            <div class="text-truncate" style="max-width: 250px;" title="@task.Description">
+                                                @task.Description
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <span class="text-muted">No description</span>
+                                        }
+                                    </td>
+                                    <td>
+                                        <div class="d-flex flex-column">
+                                            <span class="@(isOverdue ? "fw-bold text-danger" : "") ">
+                                                @task.DueDate.ToString("d")
+                                            </span>
+                                            @if (isOverdue)
+                                            {
+                                                <small class="text-danger">@((DateTime.Today - task.DueDate).Days) day(s) overdue</small>
+                                            }
+                                            else if (task.DueDate.Date == DateTime.Today)
+                                            {
+                                                <small class="text-primary">Due today</small>
+                                            }
+                                            else if (task.DueDate.Date == DateTime.Today.AddDays(1))
+                                            {
+                                                <small class="text-warning">Due tomorrow</small>
+                                            }
+                                            else if (task.DueDate.Date < DateTime.Today.AddDays(7) && task.DueDate > DateTime.Today)
+                                            {
+                                                <small class="text-muted">In @((task.DueDate - DateTime.Today).Days) days</small>
+                                            }
+                                        </div>
+                                    </td>
+                                    <td class="text-center">
+                                        <form method="post" class="d-inline" asp-page-handler="MarkCompleted" asp-route-id="@task.Id" asp-route-isCompleted="@(!task.IsCompleted)">
+                                            <button type="submit" class="btn btn-sm @(task.IsCompleted ? "btn-success" : "btn-outline-secondary") btn-sm-square"
+                                                    title="@(task.IsCompleted ? "Mark as incomplete" : "Mark as complete")">
+                                                @if (task.IsCompleted)
+                                                {
+                                                    <i class="bi bi-check-lg"></i>
+                                                }
+                                                else
+                                                {
+                                                    <i class="bi bi-dash-lg"></i>
+                                                }
+                                            </button>
+                                        </form>
+                                    </td>
+                                    <td class="text-end">
+                                        <div class="btn-group" role="group">
+                                            <a asp-page="./Edit" asp-route-id="@task.Id" class="btn btn-sm btn-outline-primary" 
+                                               title="Edit task">
+                                                <i class="bi bi-pencil"></i>
+                                            </a>
+                                            <form method="post" asp-page-handler="Delete" asp-route-id="@task.Id" class="d-inline" 
+                                                  onsubmit="return confirm('Are you sure you want to delete this task?');">
+                                                <button type="submit" class="btn btn-sm btn-outline-danger" 
+                                                        title="Delete task">
+                                                    <i class="bi bi-trash"></i>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@section Styles {
+    <style>
+        .table th {
+            white-space: nowrap;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.5px;
         }
-    </tbody>
-</table>
+        .table td {
+            vertical-align: middle;
+        }
+        .btn-group .btn {
+            margin-right: 0.25rem;
+            border-radius: 0.25rem !important;
+        }
+        .btn-sm-square {
+            width: 28px;
+            height: 28px;
+            padding: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .table-active {
+            opacity: 0.7;
+        }
+        .table-active td {
+            text-decoration: line-through;
+        }
+        .table-hover tbody tr:hover {
+            background-color: rgba(0, 0, 0, 0.02);
+        }
+        .text-truncate {
+            max-width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
+}
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            // Initialize DataTable with enhanced options
+            var table = $('.table').DataTable({
+                responsive: true,
+                order: [[2, 'asc']], // Sort by DueDate by default
+                pageLength: 10,
+                lengthMenu: [5, 10, 25, 50, 100],
+                columnDefs: [
+                    { orderable: false, targets: [3, 4] }, // Disable sorting for Status and Actions columns
+                    { className: "text-nowrap", targets: [3, 4] }, // Prevent line breaks in Status and Actions columns
+                    { responsivePriority: 1, targets: 0 }, // Task name
+                    { responsivePriority: 2, targets: 4 }, // Actions
+                    { responsivePriority: 3, targets: 2 }, // Due date
+                    { responsivePriority: 4, targets: 1 }, // Description
+                    { responsivePriority: 5, targets: 3 }  // Status
+                ],
+                language: {
+                    search: "_INPUT_",
+                    searchPlaceholder: "Search tasks...",
+                    lengthMenu: "Show _MENU_ tasks per page",
+                    info: "Showing _START_ to _END_ of _TOTAL_ tasks",
+                    infoEmpty: "No tasks found",
+                    infoFiltered: "(filtered from _MAX_ total tasks)",
+                    paginate: {
+                        first: "First",
+                        last: "Last",
+                        next: "Next",
+                        previous: "Previous"
+                    }
+                },
+                dom: '<"d-flex flex-column flex-md-row justify-content-between align-items-center mb-3"<"d-flex align-items-center"f<"ms-3"l>>rt<"d-flex flex-column flex-md-row justify-content-between align-items-center"ip>>',
+                initComplete: function() {
+                    // Add custom classes to search input and length select
+                    $('.dataTables_filter input')
+                        .addClass('form-control form-control-sm')
+                        .attr('placeholder', 'Search tasks...');
+                    
+                    $('.dataTables_length select')
+                        .addClass('form-select form-select-sm')
+                        .css('width', 'auto');
+                    
+                    // Add custom class to pagination controls
+                    $('.dataTables_paginate').addClass('pagination-sm');
+                },
+                drawCallback: function() {
+                    // Re-initialize tooltips after table redraw
+                    $('[title]').tooltip({ container: 'body' });
+                }
+            });
+
+            // Initialize tooltips
+            $('[title]').tooltip({ container: 'body' });
+
+            // Auto-hide status message after 5 seconds
+            var alert = $('.alert');
+            if (alert.length) {
+                setTimeout(function() {
+                    alert.fadeOut('slow', function() {
+                        $(this).alert('close');
+                    });
+                }, 5000);
+            }
+
+            // Handle row click (for mobile view)
+            $('.table tbody tr').on('click', function(e) {
+                // Don't trigger if clicking on a button or link
+                if ($(e.target).closest('a, button, input, .btn').length === 0) {
+                    window.location = $(this).find('a:first').attr('href');
+                }
+            });
+        });
+    </script>
+}

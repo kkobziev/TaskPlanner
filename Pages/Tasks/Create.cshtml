@@ -1,30 +1,118 @@
 @page
 @model TaskPlanner.Pages.Tasks.CreateModel
 @{
-    ViewData["Title"] = "Create Task";
+    ViewData["Title"] = "Create New Task";
 }
 
-<h1>Create Task</h1>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-page="/Index">Home</a></li>
+                    <li class="breadcrumb-item"><a asp-page="./Index">Tasks</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Create</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
 
-<form method="post">
-    <div class="form-group">
-        <label asp-for="Task.Name"></label>
-        <input asp-for="Task.Name" class="form-control" />
-        <span asp-validation-for="Task.Name" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Task.Description"></label>
-        <textarea asp-for="Task.Description" class="form-control"></textarea>
-        <span asp-validation-for="Task.Description" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Task.DueDate"></label>
-        <input asp-for="Task.DueDate" class="form-control" type="date" />
-        <span asp-validation-for="Task.DueDate" class="text-danger"></span>
-    </div>
-    <button type="submit" class="btn btn-primary">Create</button>
-</form>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="h5 mb-0">
+                        <i class="bi bi-plus-circle me-2"></i>Create New Task
+                    </h2>
+                </div>
+                <div class="card-body">
+                    @if (!ViewData.ModelState.IsValid)
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            <h5 class="alert-heading"><i class="bi bi-exclamation-triangle-fill me-2"></i>Validation Errors</h5>
+                            <div asp-validation-summary="All" class="mb-0"></div>
+                        </div>
+                    }
 
-<div>
-    <a asp-page="./Index">Back to List</a>
+                    <form method="post" class="needs-validation" novalidate>
+    @Html.AntiForgeryToken()
+                        <div class="row mb-3">
+                            <div class="col-md-12">
+                                <div class="form-floating mb-3">
+                                    <input asp-for="TaskName" class="form-control" placeholder="Enter task name" required />
+<label asp-for="TaskName"></label>
+<div class="invalid-feedback">
+    Please provide a task name.
 </div>
+<span asp-validation-for="TaskName" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-12">
+                                <div class="form-floating">
+                                    <textarea asp-for="TaskDescription" class="form-control" placeholder="Enter task description" 
+          style="height: 120px;"></textarea>
+<label asp-for="TaskDescription"></label>
+<span asp-validation-for="TaskDescription" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input asp-for="DueDate" class="form-control" type="date" required 
+       min="@DateTime.Today.ToString("yyyy-MM-dd")" />
+<label asp-for="DueDate"></label>
+<div class="invalid-feedback">
+    Please select a due date.
+</div>
+<span asp-validation-for="DueDate" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a asp-page="./Index" class="btn btn-outline-secondary">
+                                <i class="bi bi-arrow-left me-1"></i> Back to List
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-save me-1"></i> Create Task
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    
+    <script>
+        // Client-side validation for Bootstrap 5
+        (function () {
+            'use strict'
+            
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.querySelectorAll('.needs-validation')
+            
+            // Loop over them and prevent submission
+            Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+                        
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+        })()
+    </script>
+}
+}

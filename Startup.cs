@@ -39,8 +39,12 @@ namespace TaskPlanner
                 options.SupportedUICultures = supportedCultures;
             });
 
-            // Register task service
-            services.AddSingleton<ITaskService, FileTaskService>();
+            // Register task service with proper file path
+            services.AddSingleton<ITaskService>(provider => 
+                new FileTaskService(
+                    provider.GetRequiredService<ILogger<FileTaskService>>(),
+                    provider.GetRequiredService<IWebHostEnvironment>(),
+                    "Data/tasks.json"));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
