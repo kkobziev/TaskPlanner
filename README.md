@@ -128,6 +128,107 @@ Once you have the prerequisites installed:
    - **HTTPS (Recommended):** `https://localhost:5001`
    - **HTTP:** `http://localhost:5000`
 
+## Testing
+
+TaskPlanner includes a comprehensive test suite to ensure code quality and reliability. The tests are organized in a separate project called `TaskPlanner.Tests`.
+
+### Test Project Structure
+- **Models Tests**: Unit tests for TaskItem model validation and behavior
+- **Services Tests**: Tests for FileTaskService CRUD operations and data persistence
+- **Page Model Tests**: Tests for Razor Page models and their interactions
+- **Integration Tests**: End-to-end tests for web application functionality
+
+### Test Framework and Tools
+- **xUnit**: Primary testing framework
+- **Moq**: Mocking framework for isolating dependencies
+- **Microsoft.AspNetCore.Mvc.Testing**: Integration testing support
+- **Test Coverage**: 36 tests covering models, services, page models, and integration scenarios
+
+### Running Tests
+
+#### Run All Tests
+```bash
+# Navigate to the test project directory
+cd TaskPlanner.Tests
+
+# Run all tests
+dotnet test
+```
+
+#### Run Tests with Detailed Output
+```bash
+dotnet test --logger "console;verbosity=detailed"
+```
+
+#### Run Tests with Coverage (if coverage tools are installed)
+```bash
+dotnet test --collect:"XPlat Code Coverage"
+```
+
+#### Run Specific Test Categories
+```bash
+# Run only model tests
+dotnet test --filter "FullyQualifiedName~Models"
+
+# Run only service tests
+dotnet test --filter "FullyQualifiedName~Services"
+
+# Run only page model tests
+dotnet test --filter "FullyQualifiedName~Pages"
+
+# Run only integration tests
+dotnet test --filter "FullyQualifiedName~Integration"
+```
+
+### Test Categories
+
+#### 1. Model Tests (`TaskItemTests`)
+- Task creation and property validation
+- ID generation and uniqueness
+- Completion status management
+- Date validation for past and future dates
+
+#### 2. Service Tests (`FileTaskServiceTests`)
+- CRUD operations (Create, Read, Update, Delete)
+- File-based data persistence
+- Task retrieval by ID
+- Multiple task management
+- Error handling for non-existent tasks
+- Task completion functionality
+
+#### 3. Page Model Tests (`TaskPageModelTests`)
+- Index page task listing
+- Create page functionality
+- Edit page operations
+- Delete page confirmation
+- Model validation
+- Redirect behavior
+
+#### 4. Integration Tests (`WebApplicationIntegrationTests`)
+- Application startup and configuration
+- HTTP endpoint accessibility
+- Page rendering verification
+- Invalid request handling
+- Error page responses
+
+### Test Data Management
+- Tests use temporary files for data storage to avoid conflicts
+- Automatic cleanup of test data after each test run
+- Isolated test execution to prevent interference between tests
+
+### Continuous Integration
+The test suite is designed to run in CI/CD environments and provides:
+- Fast execution (< 1 second for most tests)
+- Clear failure reporting
+- Comprehensive coverage of critical functionality
+- Reliable and repeatable results
+
+### Development Workflow
+1. **Write tests first** (TDD approach recommended)
+2. **Run tests frequently** during development
+3. **Ensure all tests pass** before committing changes
+4. **Add tests** for new features and bug fixes
+
 ## Localization
 The application supports English and Ukrainian languages. Localization files are provided in the `Resources` directory.
 
