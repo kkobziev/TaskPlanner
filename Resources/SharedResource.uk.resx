@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="TaskName" xml:space="preserve">
+    <value>Назва завдання</value>
+  </data>
+  <data name="TaskDescription" xml:space="preserve">
+    <value>Опис завдання</value>
+  </data>
+  <data name="DueDate" xml:space="preserve">
+    <value>Термін виконання</value>
+  </data>
+  <data name="AddTask" xml:space="preserve">
+    <value>Додати завдання</value>
+  </data>
+  <data name="EditTask" xml:space="preserve">
+    <value>Редагувати завдання</value>
+  </data>
+  <data name="DeleteTask" xml:space="preserve">
+    <value>Видалити завдання</value>
+  </data>
+  <data name="CompleteTask" xml:space="preserve">
+    <value>Завершити завдання</value>
+  </data>
+  <data name="TaskList" xml:space="preserve">
+    <value>Список завдань</value>
+  </data>
+  <data name="ConfirmDelete" xml:space="preserve">
+    <value>Ви впевнені, що хочете видалити це завдання?</value>
+  </data>
+</root>

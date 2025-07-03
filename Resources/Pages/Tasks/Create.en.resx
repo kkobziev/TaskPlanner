@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="CreateTitle" xml:space="preserve">
+    <value>Create Task</value>
+  </data>
+  <data name="NameLabel" xml:space="preserve">
+    <value>Name:</value>
+  </data>
+  <data name="DescriptionLabel" xml:space="preserve">
+    <value>Description:</value>
+  </data>
+  <data name="DueDateLabel" xml:space="preserve">
+    <value>Due Date:</value>
+  </data>
+  <data name="SubmitButton" xml:space="preserve">
+    <value>Add Task</value>
+  </data>
+  <data name="CancelButton" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="SuccessMessage" xml:space="preserve">
+    <value>Task added successfully!</value>
+  </data>
+  <data name="ErrorMessage" xml:space="preserve">
+    <value>There was an error adding the task.</value>
+  </data>
+</root>

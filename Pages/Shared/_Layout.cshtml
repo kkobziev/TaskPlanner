@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - TaskPlanner</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a asp-page="/Tasks/Index">Home</a></li>
+                <li><a asp-page="/Tasks/Create">Add Task</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main role="main" class="container">
+        <div>
+            @RenderBody()
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2023 - TaskPlanner</p>
+    </footer>
+    <script src="~/js/site.js"></script>
+</body>
+</html>

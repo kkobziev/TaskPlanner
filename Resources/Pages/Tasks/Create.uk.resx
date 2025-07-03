@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="CreateTitle" xml:space="preserve">
+    <value>Створити завдання</value>
+  </data>
+  <data name="NameLabel" xml:space="preserve">
+    <value>Назва:</value>
+  </data>
+  <data name="DescriptionLabel" xml:space="preserve">
+    <value>Опис:</value>
+  </data>
+  <data name="DueDateLabel" xml:space="preserve">
+    <value>Дата виконання:</value>
+  </data>
+  <data name="CreateButton" xml:space="preserve">
+    <value>Створити</value>
+  </data>
+  <data name="CancelButton" xml:space="preserve">
+    <value>Скасувати</value>
+  </data>
+</root>
